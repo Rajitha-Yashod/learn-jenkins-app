@@ -35,4 +35,8 @@ pipeline {
             }
         }
     }
+    post{
+        always{
+            jnuit 'test-reports/junit.xml'
+    }
 }
