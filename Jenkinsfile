@@ -37,6 +37,7 @@ pipeline {
     }
     post{
         always{
-            jnuit 'test-reports/junit.xml'
+            junit 'test-results/junit.xml'
+        }
     }
 }
