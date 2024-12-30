@@ -43,7 +43,8 @@ pipeline {
             }
             steps {
                 sh'''
-                echo "Deploying to S3"
+                npm install netlify-cli 
+                node_modules/.bin/netlify -version
                 '''
             }
         }
