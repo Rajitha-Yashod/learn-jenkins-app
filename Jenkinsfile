@@ -34,6 +34,19 @@ pipeline {
              '''
             }
         }
+         stage('deploy'){ {
+            agent{
+                docker{
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh'''
+                echo "Deploying to S3"
+                '''
+            }
+        }
     }
     post{
         always{
