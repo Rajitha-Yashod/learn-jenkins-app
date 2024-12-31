@@ -7,6 +7,14 @@ pipeline {
     }
 
     stages {
+
+
+        stage('Docker') {
+            steps {
+                sh 'docker build -t my-image .'
+            }
+        }
+
         stage('Build') {
             agent{
                 docker{
@@ -57,12 +65,10 @@ pipeline {
             }
             steps {
                 sh'''
-                echo "Done small changes"
-                npm install netlify-cli 
-                node_modules/.bin/netlify --version
+                netlify --version
                 echo "Deploying to Netlify site Id: $NETLIFY_SITE_ID"
-                node_modules/.bin/netlify status
-                node_modules/.bin/netlify deploy --dir=build --prod
+                netlify status
+                netlify deploy --dir=build --prod
                 '''
             }
         }
